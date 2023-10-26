@@ -13,7 +13,6 @@ public class InicioSesion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio_sesion);
     }
-
     public void irANoticias(View view){
         Intent intent = new Intent(this, Noticias.class);
         startActivity(intent);
