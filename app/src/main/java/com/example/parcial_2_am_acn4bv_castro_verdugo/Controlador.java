@@ -6,6 +6,9 @@ import java.util.List;
 public class Controlador {
     List<Usuario> usuarios = new ArrayList<Usuario>();
 
+    public Controlador(){
+
+    }
     public void creaUsuarios(){
         Usuario u1 = new Usuario("lverdugo", "Lucas", "Verdugo", "123456", "lverdugo@gmail.com", 22222222);
         Usuario u2 = new Usuario("rfalcon", "Ramon", "Falcon", "123456", "rfalcon@gmail.com", 33333333);
