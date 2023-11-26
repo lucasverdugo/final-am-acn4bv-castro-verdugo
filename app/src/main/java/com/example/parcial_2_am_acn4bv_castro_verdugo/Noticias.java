@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Noticias extends AppCompatActivity {
     @Override
@@ -13,8 +14,9 @@ public class Noticias extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_noticias);
         String nombreUsuario = getIntent().getStringExtra("nombreUsuario");
-        TextView t1 = findViewById(R.id.textView5);
-        t1.setText("bienvenido a Ensobra2: " + nombreUsuario + " !!!!");
+        Toast t1 = new Toast(this);
+        t1.setText("Bienvenido a Ensobrad2: " + nombreUsuario + " !!!!!");
+        t1.show();
     }
     public void cerrarSesion(View view){
         Intent intent = new Intent(this, InicioSesion.class);

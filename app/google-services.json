@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "426093009395",
+    "project_id": "ensobra2-c1f98",
+    "storage_bucket": "ensobra2-c1f98.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:426093009395:android:1690a370dd847eedf35a86",
+        "android_client_info": {
+          "package_name": "com.example.parcial_2_am_acn4bv_castro_verdugo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2wmLQgZOnwmo9Hyuxg__ezx2GqL9MNv4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
