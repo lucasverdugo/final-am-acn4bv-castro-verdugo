@@ -10,10 +10,10 @@ public class Controlador {
 
     }
     public void creaUsuarios(){
-        Usuario u1 = new Usuario("lverdugo", "Lucas", "Verdugo", "123456", "lverdugo@gmail.com", 22222222);
-        Usuario u2 = new Usuario("rfalcon", "Ramon", "Falcon", "123456", "rfalcon@gmail.com", 33333333);
-        Usuario u3 = new Usuario("jbjusto", "Juan", "Justo", "123456", "jbjusto@gmail.com", 44444444);
-        Usuario u4 = new Usuario("vmartinez", "Victor", "Martinez", "123456", "vmartinez@gmail.com", 44444444);
+        Usuario u1 = new Usuario("lucaspverdugo@gmail.com", "Lucas", "Verdugo", "123456", "lverdugo@gmail.com", 22222222);
+        Usuario u2 = new Usuario("rfalcon@gmail.com", "Ramon", "Falcon", "123456", "rfalcon@gmail.com", 33333333);
+        Usuario u3 = new Usuario("jbjusto@gmail.com", "Juan", "Justo", "123456", "jbjusto@gmail.com", 44444444);
+        Usuario u4 = new Usuario("vmartinez@gmail.com", "Victor", "Martinez", "123456", "vmartinez@gmail.com", 44444444);
         usuarios.add(u1);
         usuarios.add(u2);
         usuarios.add(u3);

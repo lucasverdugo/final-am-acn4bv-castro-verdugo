@@ -20,13 +20,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void irAInicioSesion(View view){
-        Intent intent = new Intent(this, InicioSesion.class);
+        Intent intent = new Intent(getApplicationContext(), InicioSesion.class);
         startActivity(intent);
 
     }
 
     public void irARegistrarme(View view){
-        Intent intent = new Intent(this,Registro.class);
+        Intent intent = new Intent(getApplicationContext(),Registro.class);
         startActivity(intent);
     }
 
@@ -35,12 +35,15 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
-            Toast t1 = new Toast(this);
-            t1.setText("Ya existe un usuario logueado.");
+            Toast t1 = new Toast(getApplicationContext());
+            t1.setText("Bienvenido usuario: " + currentUser.getEmail());
             t1.show();
+            Intent intent = new Intent(getApplicationContext(), Noticias.class);
+            startActivity(intent);
+
         }
         else {
-            Intent intent = new Intent(this, InicioSesion.class);
+            Intent intent = new Intent(getApplicationContext(), InicioSesion.class);
             startActivity(intent);
         }
     }
