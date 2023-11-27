@@ -6,25 +6,183 @@
     android:layout_height="match_parent"
     tools:context=".Noticias">
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="seccion de noticias"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header_noticias"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/header_alto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/button9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="salir"
+        <ImageView
+            android:id="@+id/img_noticia_fondo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/descripcion_fondo"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bienvenida2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/img_noticia_logo"
+            android:layout_width="@dimen/logo_ancho"
+            android:layout_height="@dimen/logo_alto"
+            android:contentDescription="@string/descripcion_logo"
+            android:src="@drawable/logofinal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/img_noticia_fondo"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/noticias_cerrar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:backgroundTint="@color/btn"
+            android:onClick="cerrarSesion"
+            android:text="@string/salir"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.493" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/content_noticia"
+        android:layout_width="379dp"
+        android:layout_height="559dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
-        android:onClick="cerrarSesion"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/header_noticias">
+
+        <TextView
+            android:id="@+id/title_noticia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/equipos_title"
+            android:textSize="@dimen/title"
+            android:textStyle="bold" />
+
+        <HorizontalScrollView
+            android:id="@+id/hsv"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:contentDescription="@string/scroll_horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/btn_boca"
+                    android:layout_width="82dp"
+                    android:layout_height="82dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/btn_boca"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/boca" />
+
+                <ImageButton
+                    android:id="@+id/btn_river"
+                    android:layout_width="82sp"
+                    android:layout_height="82sp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/btn_river"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/river" />
+
+                <ImageButton
+                    android:id="@+id/btn_central"
+                    android:layout_width="82dp"
+                    android:layout_height="82sp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/btn_central"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/centralcordoba" />
+
+                <ImageButton
+                    android:id="@+id/btn_rosario"
+                    android:layout_width="82sp"
+                    android:layout_height="82sp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/btn_rosario"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/rosariocentral" />
+
+                <ImageButton
+                    android:id="@+id/btn_racing"
+                    android:layout_width="82sp"
+                    android:layout_height="82sp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/btn_racing"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/racing" />
+
+                <ImageButton
+                    android:id="@+id/btn_newells"
+                    android:layout_width="82sp"
+                    android:layout_height="82sp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/btn_newells"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/newells" />
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <ImageView
+            android:id="@+id/escudo"
+            android:layout_width="200sp"
+            android:layout_height="200sp"
+            android:contentDescription="@string/escudo"
+            android:src="@drawable/boca" />
+
+        <TextView
+            android:id="@+id/noticias_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/noticias_title"
+            android:textSize="@dimen/title"
+            android:textStyle="bold" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="221dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/content1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contenido1" />
+
+                <ImageView
+                    android:id="@+id/img_nota"
+                    android:layout_width="match_parent"
+                    android:layout_height="198dp"
+                    android:contentDescription="@string/img_contenido"
+                    android:src="@drawable/bocaimg" />
+
+                <TextView
+                    android:id="@+id/content2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20sp"
+                    android:text="@string/contenido2" />
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

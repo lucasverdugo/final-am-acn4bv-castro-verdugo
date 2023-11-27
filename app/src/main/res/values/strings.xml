@@ -7,6 +7,7 @@
 
     ///Recursos de texto compartidos
     <string name="logueo">Ingresar</string>
+    <string name="salir">Salir</string>
     <string name="registro">Registrarme</string>
     <string name="descripcion_fondo">Imagen de Fondo</string>
     <string name="descripcion_logo">Imagen de Logo</string>
@@ -25,7 +26,24 @@
     <string name="error_text">Ups.... Algo salió mal al iniciar sesión.....</string>
     <string name="error_img_desc">Imagen de error de logueo</string>
 
+    ///Noticias
+    <string name="equipos_title">Equipos</string>
+    <string name="noticias_title">Noticias</string>
+    <string name="scroll_horizontal">Scroll horizontal</string>
 
 
+    ///botones noticias
+    <string name="btn_boca">botón boca</string>
+    <string name="btn_river">botón river</string>
+    <string name="btn_central">botón central cordoba</string>
+    <string name="btn_rosario">botón rosario central</string>
+    <string name="btn_racing">botón racing</string>
+    <string name="btn_newells">botón newels</string>
+    <string name="escudo">escudo</string>
+    
+    ///contenidos
+    <string name="contenido1">esto es el titulo de la nota que hay que ver que se pone</string>
+    <string name="contenido2">esta es la nota en si y vemos que pasa esta es la nota en si y vemos que pasa esta es la nota en si y vemos que pasa esta es la nota en si y vemos que pasa esta es la nota en si y vemos que pasa esta es la nota en si y vemos que pasaesta es la nota en si y vemos que pasaesta es la nota en si y vemos que pasaesta es la nota en si y vemos que pasaesta es la nota en si y vemos que pasaesta es la nota en si y vemos que pasaesta es la nota en si y vemos que pasaesta es la nota en si y vemos que pasaesta es la nota en si y vemos que pasaesta es la nota en si y vemos que pasaesta es la nota en si y vemos que pasaesta es la nota en si y vemos que pasaesta es la nota en si y vemos que pasaesta es la nota en si y vemos que pasaesta es la nota en si y vemos que pasaesta es la nota en si y vemos que pasaesta es la nota en si y vemos que pasaesta es la nota en si y vemos que pasaesta es la nota en si y vemos que pasaesta es la nota en si y vemos que pasaesta es la nota en si y vemos que pasaesta es la nota en si y vemos que pasaesta es la nota en si y vemos que pasaesta es la nota en si y vemos que pasaesta es la nota en si y vemos que pasaesta es la nota en si y vemos que pasa</string>
+    <string name="img_contenido">imagen de contenido</string>
 
 </resources>
