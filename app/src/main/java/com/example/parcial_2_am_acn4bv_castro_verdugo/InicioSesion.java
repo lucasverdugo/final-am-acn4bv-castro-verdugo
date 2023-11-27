@@ -36,7 +36,9 @@ public class InicioSesion extends AppCompatActivity {
                             Intent intent = new Intent(getApplicationContext(), Noticias.class);
                             startActivity(intent);
                         }else{
-                           Toast.makeText(InicioSesion.this, "El inicio de sesión fallo.", Toast.LENGTH_SHORT).show();
+                           Toast.makeText(InicioSesion.this, "El inicio de sesión fallo. Usuario y contraseña incorrecto.", Toast.LENGTH_SHORT).show();
+                           Intent intent = new Intent(getApplicationContext(), ErrorInicioSesion.class);
+                           startActivity(intent);
                         }
                     }
                 });
@@ -47,36 +49,7 @@ public class InicioSesion extends AppCompatActivity {
         EditText password = findViewById(R.id.password);
         String usuario = user.getText().toString();
         String clave = password.getText().toString();
-
         this.login(usuario, clave);
-
-
-        /*Controlador c1 = new Controlador();
-        List<Usuario> u1 = c1.listarUsuarios();
-        EditText editText1 = findViewById(R.id.user);
-        String usuario = editText1.getText().toString();
-        EditText editText2 = findViewById(R.id.password);
-        String password = editText2.getText().toString();
-        String nombreUsuario = null;
-        boolean autenticacionOK = false;
-
-        for (Usuario u : u1) {
-            if(u.getUsuario().equals(usuario) && u.getPassword().equals(password)){
-                autenticacionOK = true;
-                nombreUsuario = u.getNombre();
-            }
-        }
-        if(autenticacionOK){
-            Intent intent = new Intent(this, Noticias.class);
-            intent.putExtra("nombreUsuario", nombreUsuario);
-            startActivity(intent);
-        }
-        else {
-            Toast t1 = new Toast(this);
-            t1.setText("Usuario y contraseñas incorrectos.");
-            t1.show();
-        }*/
-
     }
 
     public void irARegistrarme(View view){
