@@ -7,36 +7,87 @@
     tools:context=".ErrorInicioSesion">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/error_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="pantalla de error inicio de sesion"
+        android:text="@string/error_text"
+        android:textSize="@dimen/title"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.286" />
 
     <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
+        android:id="@+id/btn_error_logueo"
+        android:layout_width="@dimen/btn"
         android:layout_height="wrap_content"
-        android:text="volver al inicio"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        android:layout_marginBottom="156dp"
+        android:backgroundTint="@color/btn"
         android:onClick="irAInicio"
-        />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="registrarme"
+        android:text="@string/logueo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_error_registro"
+        android:layout_width="@dimen/btn"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/btn"
         android:onClick="irARegistrarme"
-        />
+        android:text="@string/registro"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_error_logueo"
+        app:layout_constraintVertical_bias="0.277" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header_error_inicio"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/header_alto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/header_error_fondo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/descripcion_fondo"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bienvenida2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/img_header_error_logo"
+            android:layout_width="@dimen/logo_ancho"
+            android:layout_height="@dimen/logo_alto"
+            android:contentDescription="@string/descripcion_logo"
+            android:src="@drawable/logofinal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/header_error_fondo"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/img_error"
+        android:layout_width="match_parent"
+        android:layout_height="196dp"
+        android:contentDescription="@string/error_img_desc"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/btn_error_logueo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/error_txt"
+        app:srcCompat="@drawable/chiquimafia" />
 </androidx.constraintlayout.widget.ConstraintLayout>

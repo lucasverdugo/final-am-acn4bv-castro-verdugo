@@ -1,3 +1,31 @@
 <resources>
     <string name="app_name">parcial-2-am-acn4bv-castro-verdugo</string>
+    ///Pantalla Inicial
+    ///
+    <string name="inicial_main_titulo">Bienvenidos a: </string>
+
+
+    ///Recursos de texto compartidos
+    <string name="logueo">Ingresar</string>
+    <string name="registro">Registrarme</string>
+    <string name="descripcion_fondo">Imagen de Fondo</string>
+    <string name="descripcion_logo">Imagen de Logo</string>
+    <string name="user_label">Usuario</string>
+    <string name="password_label">Clave</string>
+    <string name="user_description">Ingrese su mail como usuario</string>
+    <string name="password_description">Ingrese su contraseña</string>
+
+    ///Inicio de Sesion
+    <string name="inicio_title">Inicio de Sesión</string>
+
+    ///Registro de usuario
+    <string name="registro_title">Registro de Usuario</string>
+
+    ///Error Logueo
+    <string name="error_text">Ups.... Algo salió mal al iniciar sesión.....</string>
+    <string name="error_img_desc">Imagen de error de logueo</string>
+
+
+
+
 </resources>

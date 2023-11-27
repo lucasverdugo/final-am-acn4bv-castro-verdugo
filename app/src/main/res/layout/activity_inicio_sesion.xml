@@ -6,48 +6,87 @@
     android:layout_height="match_parent"
     tools:context=".InicioSesion">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header_inicio"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/header_alto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/header_fondo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/descripcion_logo"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@drawable/bienvenida2" />
+
+        <ImageView
+            android:id="@+id/img_inicio_logo"
+            android:layout_width="@dimen/logo_ancho"
+            android:layout_height="@dimen/logo_alto"
+            android:contentDescription="@string/descripcion_logo"
+            android:src="@drawable/logofinal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/header_fondo"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <TextView
         android:id="@+id/inicio_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="168dp"
-        android:text="inicio de sesión"
+        android:text="@string/inicio_title"
+        android:textSize="@dimen/title"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/ingresar_btn"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/btn"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="156dp"
+        android:backgroundTint="@color/btn"
         android:onClick="irANoticias"
-        android:text="ingresar"
+        android:text="@string/logueo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password"
-        app:layout_constraintVertical_bias="0.417" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/nousu_btn"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/btn"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/btn"
         android:onClick="irARegistrarme"
-        android:text="no tengo usuario"
+        android:text="@string/registro"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ingresar_btn"
-        app:layout_constraintVertical_bias="0.218" />
+        app:layout_constraintVertical_bias="0.277" />
 
     <EditText
         android:id="@+id/user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="116dp"
+        android:contentDescription="@string/user_description"
         android:ems="10"
-        android:inputType="textEmailAddress"
+        android:hint="@string/user_description"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inicio_title" />
@@ -57,7 +96,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
+        android:contentDescription="@string/password_description"
         android:ems="10"
+        android:hint="@string/password_description"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
@@ -69,8 +110,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
-        android:layout_marginBottom="4dp"
-        android:text="Usuario"
+        android:text="@string/user_label"
         app:layout_constraintBottom_toTopOf="@+id/user"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -79,7 +119,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
-        android:text="Contraseña"
+        android:text="@string/password_label"
         app:layout_constraintBottom_toTopOf="@+id/password"
         app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
