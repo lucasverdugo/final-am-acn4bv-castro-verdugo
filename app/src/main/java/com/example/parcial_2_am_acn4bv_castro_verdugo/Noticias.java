@@ -47,6 +47,8 @@ public class Noticias extends AppCompatActivity {
 
     public void onClickBoca(View view){
 
+        String imageUrl = "https://img.lagaceta.com.ar/fotos/notas/2023/11/04/1200x800_boca-se-vuelve-brasil-manos-vacias-1012650-211843.webp";
+
         LinearLayout layoutEscudo = findViewById(R.id.layoutEscudo);
         ImageView logoBoca = new ImageView(this);
         logoBoca.setImageResource(R.drawable.boca);
@@ -58,6 +60,8 @@ public class Noticias extends AppCompatActivity {
 
         TextView tituloNoticia = findViewById(R.id.tituloNoticia);
         ImageView imagenNoticia = findViewById(R.id.img_nota);
+        DescargaImgBoca downloadImageTask = new DescargaImgBoca(imagenNoticia);
+        downloadImageTask.execute(imageUrl);
         TextView contenido1 = findViewById(R.id.content1);
         TextView contenido2 = findViewById(R.id.content2);
 
@@ -67,6 +71,8 @@ public class Noticias extends AppCompatActivity {
         contenido2.setText(R.string.contenido2Boca);
     }
     public void onClickRiver(View view){
+
+        String imageUrl = "https://soydelmillo.com/wp-content/uploads/2023/10/River-1.png.webp";
 
         LinearLayout layoutEscudo = findViewById(R.id.layoutEscudo);
         ImageView logoRiver = new ImageView(this);
@@ -79,6 +85,8 @@ public class Noticias extends AppCompatActivity {
 
         TextView tituloNoticia = findViewById(R.id.tituloNoticia);
         ImageView imagenNoticia = findViewById(R.id.img_nota);
+        DescargaImgRiver downloadImageTask = new DescargaImgRiver(imagenNoticia);
+        downloadImageTask.execute(imageUrl);
         TextView contenido1 = findViewById(R.id.content1);
         TextView contenido2 = findViewById(R.id.content2);
 
@@ -88,6 +96,8 @@ public class Noticias extends AppCompatActivity {
         contenido2.setText(R.string.contenido2River);
     }
     public void onClickRosario(View view){
+
+        String imageUrl = "https://img.lagaceta.com.ar/fotos/notas/2023/05/07/1200x796_festejo-jugadores-central-foto-tomada-de-twitter-rosariocentral-990282-181022.webp";
 
         LinearLayout layoutEscudo = findViewById(R.id.layoutEscudo);
         ImageView logoRosario = new ImageView(this);
@@ -100,6 +110,8 @@ public class Noticias extends AppCompatActivity {
 
         TextView tituloNoticia = findViewById(R.id.tituloNoticia);
         ImageView imagenNoticia = findViewById(R.id.img_nota);
+        DescargaImgRosario downloadImageTask = new DescargaImgRosario(imagenNoticia);
+        downloadImageTask.execute(imageUrl);
         TextView contenido1 = findViewById(R.id.content1);
         TextView contenido2 = findViewById(R.id.content2);
 
@@ -109,6 +121,8 @@ public class Noticias extends AppCompatActivity {
         contenido2.setText(R.string.contenido2Rosario);
     }
     public void onClickDefensa(View view){
+
+        String imageUrl = "https://noticiar.com.ar/datos/fotos/2023/10/05/6466-10/imagen_6513.jpg";
 
         LinearLayout layoutEscudo = findViewById(R.id.layoutEscudo);
         ImageView logoDefensa = new ImageView(this);
@@ -121,6 +135,8 @@ public class Noticias extends AppCompatActivity {
 
         TextView tituloNoticia = findViewById(R.id.tituloNoticia);
         ImageView imagenNoticia = findViewById(R.id.img_nota);
+        DescargaImgDefensa downloadImageTask = new DescargaImgDefensa(imagenNoticia);
+        downloadImageTask.execute(imageUrl);
         TextView contenido1 = findViewById(R.id.content1);
         TextView contenido2 = findViewById(R.id.content2);
 
@@ -131,6 +147,8 @@ public class Noticias extends AppCompatActivity {
     }
 
     public void onClickIndependiente(View view){
+
+        String imageUrl = "https://www.elgrafico.com.ar/media/cache/pub_news_details_large/media/i/21/f0/21f0d353038dcedb3db2ee95298ca09e8fd5f244.jpg";
 
         LinearLayout layoutEscudo = findViewById(R.id.layoutEscudo);
         ImageView logoIndependiente = new ImageView(this);
@@ -143,6 +161,8 @@ public class Noticias extends AppCompatActivity {
 
         TextView tituloNoticia = findViewById(R.id.tituloNoticia);
         ImageView imagenNoticia = findViewById(R.id.img_nota);
+        DescargaImgIndependiente downloadImageTask = new DescargaImgIndependiente(imagenNoticia);
+        downloadImageTask.execute(imageUrl);
         TextView contenido1 = findViewById(R.id.content1);
         TextView contenido2 = findViewById(R.id.content2);
 
@@ -153,6 +173,8 @@ public class Noticias extends AppCompatActivity {
     }
 
     public void onClickRacing(View view){
+
+        String imageUrl = "https://www.relatores.com.ar/datos/fotos/2021/05/31/1849-10/imagen_2050.jpg";
 
         LinearLayout layoutEscudo = findViewById(R.id.layoutEscudo);
         ImageView logoRacing = new ImageView(this);
@@ -165,6 +187,8 @@ public class Noticias extends AppCompatActivity {
 
         TextView tituloNoticia = findViewById(R.id.tituloNoticia);
         ImageView imagenNoticia = findViewById(R.id.img_nota);
+        DescargaImgRacing downloadImageTask = new DescargaImgRacing(imagenNoticia);
+        downloadImageTask.execute(imageUrl);
         TextView contenido1 = findViewById(R.id.content1);
         TextView contenido2 = findViewById(R.id.content2);
 
@@ -175,6 +199,8 @@ public class Noticias extends AppCompatActivity {
     }
 
     public void onClickNewells(View view){
+
+        String imageUrl = "https://relatores.com.ar/datos/fotos/2022/10/11/12665-10/imagen_14098.jpg";
 
         LinearLayout layoutEscudo = findViewById(R.id.layoutEscudo);
         ImageView logoNewells = new ImageView(this);
@@ -187,6 +213,8 @@ public class Noticias extends AppCompatActivity {
 
         TextView tituloNoticia = findViewById(R.id.tituloNoticia);
         ImageView imagenNoticia = findViewById(R.id.img_nota);
+        DescargaImgNewells downloadImageTask = new DescargaImgNewells(imagenNoticia);
+        downloadImageTask.execute(imageUrl);
         TextView contenido1 = findViewById(R.id.content1);
         TextView contenido2 = findViewById(R.id.content2);
 
