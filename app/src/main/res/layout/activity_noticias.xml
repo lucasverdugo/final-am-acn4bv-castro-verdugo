@@ -87,7 +87,9 @@
                     android:layout_weight="1"
                     android:contentDescription="@string/btn_boca"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/boca" />
+                    android:src="@drawable/boca"
+                    android:onClick="onClickBoca"
+                    />
 
                 <ImageButton
                     android:id="@+id/btn_river"
@@ -96,16 +98,9 @@
                     android:layout_weight="1"
                     android:contentDescription="@string/btn_river"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/river" />
-
-                <ImageButton
-                    android:id="@+id/btn_central"
-                    android:layout_width="82dp"
-                    android:layout_height="82sp"
-                    android:layout_weight="1"
-                    android:contentDescription="@string/btn_central"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/centralcordoba" />
+                    android:src="@drawable/river"
+                    android:onClick="onClickRiver"
+                    />
 
                 <ImageButton
                     android:id="@+id/btn_rosario"
@@ -113,8 +108,31 @@
                     android:layout_height="82sp"
                     android:layout_weight="1"
                     android:contentDescription="@string/btn_rosario"
+                    android:onClick="onClickRosario"
                     android:scaleType="centerCrop"
                     android:src="@drawable/rosariocentral" />
+
+                <ImageButton
+                    android:id="@+id/btn_defensa"
+                    android:layout_width="82sp"
+                    android:layout_height="82sp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/btn_defensa"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/defensa"
+                    android:onClick="onClickDefensa"
+                    />
+
+                <ImageButton
+                    android:id="@+id/btn_independiente"
+                    android:layout_width="82sp"
+                    android:layout_height="82sp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/btn_independiente"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/independiente"
+                    android:onClick="onClickIndependiente"
+                    />
 
                 <ImageButton
                     android:id="@+id/btn_racing"
@@ -122,6 +140,7 @@
                     android:layout_height="82sp"
                     android:layout_weight="1"
                     android:contentDescription="@string/btn_racing"
+                    android:onClick="onClickRacing"
                     android:scaleType="centerCrop"
                     android:src="@drawable/racing" />
 
@@ -131,18 +150,12 @@
                     android:layout_height="82sp"
                     android:layout_weight="1"
                     android:contentDescription="@string/btn_newells"
+                    android:onClick="onClickNewells"
                     android:scaleType="centerCrop"
                     android:src="@drawable/newells" />
 
             </LinearLayout>
         </HorizontalScrollView>
-
-        <ImageView
-            android:id="@+id/escudo"
-            android:layout_width="200sp"
-            android:layout_height="200sp"
-            android:contentDescription="@string/escudo"
-            android:src="@drawable/boca" />
 
         <TextView
             android:id="@+id/noticias_title"
@@ -152,6 +165,13 @@
             android:textSize="@dimen/title"
             android:textStyle="bold" />
 
+        <LinearLayout
+            android:id="@+id/layoutEscudo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"></LinearLayout>
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="221dp">
@@ -160,6 +180,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tituloNoticia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/titulo"
+                    android:textSize="@dimen/title"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/content1"
