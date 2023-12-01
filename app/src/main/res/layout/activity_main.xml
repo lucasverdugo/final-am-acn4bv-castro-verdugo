@@ -6,13 +6,68 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
+    <ImageView
+        android:id="@+id/back_image_mail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:contentDescription="@string/descripcion_fondo"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bienvenida2" />
+
+    <TextView
+        android:id="@+id/inicial_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/inicial_main_titulo"
+        android:textColor="@color/white"
+        android:textSize="@dimen/title"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.287" />
+
+    <Button
+        android:id="@+id/btn_inicio_main"
+        android:layout_width="@dimen/btn"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="156dp"
+        android:backgroundTint="@color/btn"
+        android:onClick="irAInicioSesion"
+        android:text="@string/logueo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_registro_main"
+        android:layout_width="@dimen/btn"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/btn"
+        android:onClick="irARegistrarme"
+        android:text="@string/registro"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_inicio_main"
+        app:layout_constraintVertical_bias="0.277" />
+
+    <ImageView
+        android:id="@+id/image_logo_main"
+        android:layout_width="@dimen/logo_ancho"
+        android:layout_height="@dimen/logo_alto"
+        android:layout_marginTop="100dp"
+        android:contentDescription="@string/descripcion_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inicial_main"
+        app:srcCompat="@drawable/logofinal" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

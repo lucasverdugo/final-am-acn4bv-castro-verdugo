@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    ///botones
+    <dimen name="btn">200sp</dimen>
+
+    ///titulos
+    <dimen name="title">18sp</dimen>
+
+    ///logo
+    <dimen name="logo_ancho">202dp</dimen>s
+    <dimen name="logo_alto">76dp</dimen>
+
+    //header
+    <dimen name="header_alto">131dp</dimen>
+
+</resources>
