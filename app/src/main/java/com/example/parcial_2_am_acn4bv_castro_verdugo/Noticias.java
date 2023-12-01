@@ -2,7 +2,10 @@ package com.example.parcial_2_am_acn4bv_castro_verdugo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -47,53 +50,75 @@ public class Noticias extends AppCompatActivity {
 
     public void onClickBoca(View view){
 
-        String imageUrl = "https://img.lagaceta.com.ar/fotos/notas/2023/11/04/1200x800_boca-se-vuelve-brasil-manos-vacias-1012650-211843.webp";
+        ConnectivityManager connMgr = (ConnectivityManager)
+        getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
-        LinearLayout layoutEscudo = findViewById(R.id.layoutEscudo);
-        ImageView logoBoca = new ImageView(this);
-        logoBoca.setImageResource(R.drawable.boca);
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(400, 400);
-        logoBoca.setLayoutParams(layoutParams);
-        layoutEscudo.removeAllViews();
-        layoutEscudo.addView(logoBoca);
-        layoutEscudo.setGravity(Gravity.CENTER);
+        if(networkInfo != null && networkInfo.isConnected()){
 
-        TextView tituloNoticia = findViewById(R.id.tituloNoticia);
-        ImageView imagenNoticia = findViewById(R.id.img_nota);
-        DescargaImgBoca downloadImageTask = new DescargaImgBoca(imagenNoticia);
-        downloadImageTask.execute(imageUrl);
-        TextView contenido1 = findViewById(R.id.content1);
-        TextView contenido2 = findViewById(R.id.content2);
+            String imageUrl = "https://img.lagaceta.com.ar/fotos/notas/2023/11/04/1200x800_boca-se-vuelve-brasil-manos-vacias-1012650-211843.webp";
 
-        tituloNoticia.setText(R.string.tituloNoticiaBoca);
-        contenido1.setText(R.string.contenido1Boca);
-        imagenNoticia.setImageResource(R.drawable.bocaimg);
-        contenido2.setText(R.string.contenido2Boca);
+            LinearLayout layoutEscudo = findViewById(R.id.layoutEscudo);
+            ImageView logoBoca = new ImageView(this);
+            logoBoca.setImageResource(R.drawable.boca);
+            ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(400, 400);
+            logoBoca.setLayoutParams(layoutParams);
+            layoutEscudo.removeAllViews();
+            layoutEscudo.addView(logoBoca);
+            layoutEscudo.setGravity(Gravity.CENTER);
+
+            TextView tituloNoticia = findViewById(R.id.tituloNoticia);
+            ImageView imagenNoticia = findViewById(R.id.img_nota);
+
+            DescargaImgBoca downloadImageTask = new DescargaImgBoca(imagenNoticia);
+            downloadImageTask.execute(imageUrl);
+
+            TextView contenido1 = findViewById(R.id.content1);
+            TextView contenido2 = findViewById(R.id.content2);
+
+            tituloNoticia.setText(R.string.tituloNoticiaBoca);
+            contenido1.setText(R.string.contenido1Boca);
+            imagenNoticia.setImageResource(R.drawable.bocaimg);
+            contenido2.setText(R.string.contenido2Boca);
+
+        }else{
+            Toast.makeText(Noticias.this, "Su conexión con internet se perdió. Acitve sus datos o vuelva a una zona con conexión.", Toast.LENGTH_SHORT).show();
+        }
+
     }
     public void onClickRiver(View view){
 
-        String imageUrl = "https://soydelmillo.com/wp-content/uploads/2023/10/River-1.png.webp";
+        ConnectivityManager connMgr = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
-        LinearLayout layoutEscudo = findViewById(R.id.layoutEscudo);
-        ImageView logoRiver = new ImageView(this);
-        logoRiver.setImageResource(R.drawable.river);
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(400, 400);
-        logoRiver.setLayoutParams(layoutParams);
-        layoutEscudo.removeAllViews();
-        layoutEscudo.addView(logoRiver);
-        layoutEscudo.setGravity(Gravity.CENTER);
+        if(networkInfo != null && networkInfo.isConnected()){
+            String imageUrl = "https://soydelmillo.com/wp-content/uploads/2023/10/River-1.png.webp";
 
-        TextView tituloNoticia = findViewById(R.id.tituloNoticia);
-        ImageView imagenNoticia = findViewById(R.id.img_nota);
-        DescargaImgRiver downloadImageTask = new DescargaImgRiver(imagenNoticia);
-        downloadImageTask.execute(imageUrl);
-        TextView contenido1 = findViewById(R.id.content1);
-        TextView contenido2 = findViewById(R.id.content2);
+            LinearLayout layoutEscudo = findViewById(R.id.layoutEscudo);
+            ImageView logoRiver = new ImageView(this);
+            logoRiver.setImageResource(R.drawable.river);
+            ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(400, 400);
+            logoRiver.setLayoutParams(layoutParams);
+            layoutEscudo.removeAllViews();
+            layoutEscudo.addView(logoRiver);
+            layoutEscudo.setGravity(Gravity.CENTER);
 
-        tituloNoticia.setText(R.string.tituloNoticiaRiver);
-        contenido1.setText(R.string.contenido1River);
-        imagenNoticia.setImageResource(R.drawable.riverimg);
-        contenido2.setText(R.string.contenido2River);
+            TextView tituloNoticia = findViewById(R.id.tituloNoticia);
+            ImageView imagenNoticia = findViewById(R.id.img_nota);
+            DescargaImgRiver downloadImageTask = new DescargaImgRiver(imagenNoticia);
+            downloadImageTask.execute(imageUrl);
+            TextView contenido1 = findViewById(R.id.content1);
+            TextView contenido2 = findViewById(R.id.content2);
+
+            tituloNoticia.setText(R.string.tituloNoticiaRiver);
+            contenido1.setText(R.string.contenido1River);
+            imagenNoticia.setImageResource(R.drawable.riverimg);
+            contenido2.setText(R.string.contenido2River);
+        }
+        else{
+            Toast.makeText(Noticias.this, "Su conexión con internet se perdió. Acitve sus datos o vuelva a una zona con conexión.", Toast.LENGTH_SHORT).show();
+        }
     }
     public void onClickRosario(View view){
 

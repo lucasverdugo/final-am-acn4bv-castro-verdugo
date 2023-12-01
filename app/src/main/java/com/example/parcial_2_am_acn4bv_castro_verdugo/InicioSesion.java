@@ -3,7 +3,10 @@ package com.example.parcial_2_am_acn4bv_castro_verdugo;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -28,20 +31,30 @@ public class InicioSesion extends AppCompatActivity {
     }
 
     public void login(String user, String password){
-        mAuth.signInWithEmailAndPassword(user, password)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            Intent intent = new Intent(getApplicationContext(), Noticias.class);
-                            startActivity(intent);
-                        }else{
-                           Toast.makeText(InicioSesion.this, "El inicio de sesión fallo. Usuario y contraseña incorrecto.", Toast.LENGTH_SHORT).show();
-                           Intent intent = new Intent(getApplicationContext(), ErrorInicioSesion.class);
-                           startActivity(intent);
+
+        ConnectivityManager connMgr = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if(networkInfo != null && networkInfo.isConnected()){
+            mAuth.signInWithEmailAndPassword(user, password)
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful()){
+                                Intent intent = new Intent(getApplicationContext(), Noticias.class);
+                                startActivity(intent);
+                            }else{
+                                Toast.makeText(InicioSesion.this, "El inicio de sesión fallo. Usuario y contraseña incorrecto.", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(getApplicationContext(), ErrorInicioSesion.class);
+                                startActivity(intent);
+                            }
                         }
-                    }
-                });
+                    });
+        }
+        else {
+            Toast.makeText(InicioSesion.this, "Su conexión con internet se perdió. Acitve sus datos o vuelva a una zona con conexión.", Toast.LENGTH_SHORT).show();
+        }
+
     }
     public void irANoticias(View view){
 
