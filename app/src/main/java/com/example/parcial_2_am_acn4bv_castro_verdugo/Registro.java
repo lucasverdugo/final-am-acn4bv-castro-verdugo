@@ -3,7 +3,10 @@ package com.example.parcial_2_am_acn4bv_castro_verdugo;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -26,20 +29,30 @@ public class Registro extends AppCompatActivity {
     }
 
     public void createUser(String user, String password){
-        mAuth.createUserWithEmailAndPassword(user, password)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            Intent intent = new Intent(getApplicationContext(), Noticias.class);
-                            startActivity(intent);
-                        }else{
-                            Toast.makeText(Registro.this, "Error al intentar el registro del usuario.", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplicationContext(), ErrorInicioSesion.class);
-                            startActivity(intent);
+
+        ConnectivityManager connMgr = (ConnectivityManager)
+        getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+
+        if(networkInfo != null && networkInfo.isConnected()) {
+            mAuth.createUserWithEmailAndPassword(user, password)
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                Intent intent = new Intent(getApplicationContext(), Noticias.class);
+                                startActivity(intent);
+                            } else {
+                                Toast.makeText(Registro.this, "Error al intentar el registro del usuario.", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(getApplicationContext(), ErrorInicioSesion.class);
+                                startActivity(intent);
+                            }
                         }
-                    }
-                });
+                    });
+        }
+        else{
+            Toast.makeText(Registro.this, "Su conexión con internet se perdió. Acitve sus datos o vuelva a una zona con conexión.", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void registro(View view){
