@@ -27,7 +27,7 @@
         android:layout_marginBottom="156dp"
         android:backgroundTint="@color/btn"
         android:onClick="irAInicio"
-        android:text="@string/logueo"
+        android:text="@string/reintentar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"

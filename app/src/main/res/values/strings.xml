@@ -7,7 +7,9 @@
 
     ///Recursos de texto compartidos
     <string name="logueo">Ingresar</string>
-    <string name="salir">Salir</string>
+    <string name="logout">Cerrar Sesión</string>
+    <string name="reintentar">Reintentar Logueo</string>
+    <string name="volver">Volver</string>
     <string name="registro">Registrarme</string>
     <string name="descripcion_fondo">Imagen de Fondo</string>
     <string name="descripcion_logo">Imagen de Logo</string>
