@@ -33,9 +33,7 @@ public class Noticias extends AppCompatActivity {
         setContentView(R.layout.activity_noticias);
         mAuth = FirebaseAuth.getInstance();
         String nombreUsuario = getIntent().getStringExtra("nombreUsuario");
-        Toast t1 = new Toast(this);
-        t1.setText("Bienvenido a Ensobrad2: " + mAuth.getCurrentUser().getEmail() + " !!!!!");
-        t1.show();
+        Toast.makeText(Noticias.this, "Hola " + nombreUsuario + " accede a las novedades de fútbol seleccionando un equipo!", Toast.LENGTH_SHORT).show();
         ApiObtenerNoticias noticia = new ApiObtenerNoticias(this, 0);
         noticia.execute("https://noticiasapi.lucas-pablopabl.repl.co/");
         tit = findViewById(R.id.tituloNoticia);
