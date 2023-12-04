@@ -17,7 +17,14 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class Noticias extends AppCompatActivity {
+    private TextView tit;
+    private ImageView img;
+    private TextView conte1;
+    private TextView conte2;
 
     private FirebaseAuth mAuth;
     @Override
@@ -25,18 +32,18 @@ public class Noticias extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_noticias);
         mAuth = FirebaseAuth.getInstance();
-        String nombreUsuario = getIntent().getStringExtra("nombreUsuario");
-        Toast t1 = new Toast(this);
-        t1.setText("Bienvenido a Ensobrad2: " + mAuth.getCurrentUser().getEmail() + " !!!!!");
-        t1.show();
-        TextView tituloNoticia = findViewById(R.id.tituloNoticia);
-        ImageView imagenNoticia = findViewById(R.id.img_nota);
-        TextView contenido1 = findViewById(R.id.content1);
-        TextView contenido2 = findViewById(R.id.content2);;
-        tituloNoticia.setText(R.string.tituloNoticia);
-        imagenNoticia.setImageResource(R.drawable.chiquimafia);
-        contenido1.setText(R.string.content1);
-        contenido2.setText(R.string.content2);
+        String mail = mAuth.getCurrentUser().getEmail().toString();
+        Toast.makeText(Noticias.this, "Hola " + mail + " accede a las novedades de fútbol seleccionando un equipo!", Toast.LENGTH_SHORT).show();
+        ApiObtenerNoticias noticia = new ApiObtenerNoticias(this, 0);
+        noticia.execute("https://noticiasapi.lucas-pablopabl.repl.co/");
+        tit = findViewById(R.id.tituloNoticia);
+        img = findViewById(R.id.img_nota);
+        conte1 = findViewById(R.id.content1);
+        conte2 = findViewById(R.id.content2);;
+        tit.setText(R.string.tituloNoticia);
+        img.setImageResource(R.drawable.chiquimafia);
+        conte1.setText(R.string.content1);
+        conte2.setText(R.string.content2);
         LinearLayout layoutEscudo = findViewById(R.id.layoutEscudo);
         layoutEscudo.removeAllViews();
     }
@@ -51,7 +58,7 @@ public class Noticias extends AppCompatActivity {
     public void onClickBoca(View view){
 
         ConnectivityManager connMgr = (ConnectivityManager)
-        getSystemService(Context.CONNECTIVITY_SERVICE);
+                getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
         if(networkInfo != null && networkInfo.isConnected()){
@@ -66,20 +73,8 @@ public class Noticias extends AppCompatActivity {
             layoutEscudo.removeAllViews();
             layoutEscudo.addView(logoBoca);
             layoutEscudo.setGravity(Gravity.CENTER);
-
-            TextView tituloNoticia = findViewById(R.id.tituloNoticia);
-            ImageView imagenNoticia = findViewById(R.id.img_nota);
-
-            DescargaImgBoca downloadImageTask = new DescargaImgBoca(imagenNoticia);
-            downloadImageTask.execute(imageUrl);
-
-            TextView contenido1 = findViewById(R.id.content1);
-            TextView contenido2 = findViewById(R.id.content2);
-
-            tituloNoticia.setText(R.string.tituloNoticiaBoca);
-            contenido1.setText(R.string.contenido1Boca);
-            imagenNoticia.setImageResource(R.drawable.bocaimg);
-            contenido2.setText(R.string.contenido2Boca);
+            ApiObtenerNoticias noticia = new ApiObtenerNoticias(this, 1);
+            noticia.execute("https://noticiasapi.lucas-pablopabl.repl.co/");
 
         }else{
             Toast.makeText(Noticias.this, "Su conexión con internet se perdió. Acitve sus datos o vuelva a una zona con conexión.", Toast.LENGTH_SHORT).show();
@@ -89,7 +84,7 @@ public class Noticias extends AppCompatActivity {
     public void onClickRiver(View view){
 
         ConnectivityManager connMgr = (ConnectivityManager)
-        getSystemService(Context.CONNECTIVITY_SERVICE);
+                getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
         if(networkInfo != null && networkInfo.isConnected()){
@@ -104,17 +99,8 @@ public class Noticias extends AppCompatActivity {
             layoutEscudo.addView(logoRiver);
             layoutEscudo.setGravity(Gravity.CENTER);
 
-            TextView tituloNoticia = findViewById(R.id.tituloNoticia);
-            ImageView imagenNoticia = findViewById(R.id.img_nota);
-            DescargaImgRiver downloadImageTask = new DescargaImgRiver(imagenNoticia);
-            downloadImageTask.execute(imageUrl);
-            TextView contenido1 = findViewById(R.id.content1);
-            TextView contenido2 = findViewById(R.id.content2);
-
-            tituloNoticia.setText(R.string.tituloNoticiaRiver);
-            contenido1.setText(R.string.contenido1River);
-            imagenNoticia.setImageResource(R.drawable.riverimg);
-            contenido2.setText(R.string.contenido2River);
+            ApiObtenerNoticias noticia = new ApiObtenerNoticias(this, 2);
+            noticia.execute("https://noticiasapi.lucas-pablopabl.repl.co/");
         }
         else{
             Toast.makeText(Noticias.this, "Su conexión con internet se perdió. Acitve sus datos o vuelva a una zona con conexión.", Toast.LENGTH_SHORT).show();
@@ -123,7 +109,7 @@ public class Noticias extends AppCompatActivity {
     public void onClickRosario(View view){
 
         ConnectivityManager connMgr = (ConnectivityManager)
-        getSystemService(Context.CONNECTIVITY_SERVICE);
+                getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
         if(networkInfo != null && networkInfo.isConnected()){
@@ -138,17 +124,8 @@ public class Noticias extends AppCompatActivity {
             layoutEscudo.addView(logoRosario);
             layoutEscudo.setGravity(Gravity.CENTER);
 
-            TextView tituloNoticia = findViewById(R.id.tituloNoticia);
-            ImageView imagenNoticia = findViewById(R.id.img_nota);
-            DescargaImgRosario downloadImageTask = new DescargaImgRosario(imagenNoticia);
-            downloadImageTask.execute(imageUrl);
-            TextView contenido1 = findViewById(R.id.content1);
-            TextView contenido2 = findViewById(R.id.content2);
-
-            tituloNoticia.setText(R.string.tituloNoticiaRosario);
-            contenido1.setText(R.string.contenido1Rosario);
-            imagenNoticia.setImageResource(R.drawable.rosarioimg);
-            contenido2.setText(R.string.contenido2Rosario);
+            ApiObtenerNoticias noticia = new ApiObtenerNoticias(this, 3);
+            noticia.execute("https://noticiasapi.lucas-pablopabl.repl.co/");
         }
         else{
             Toast.makeText(Noticias.this, "Su conexión con internet se perdió. Acitve sus datos o vuelva a una zona con conexión.", Toast.LENGTH_SHORT).show();
@@ -157,7 +134,7 @@ public class Noticias extends AppCompatActivity {
     public void onClickDefensa(View view){
 
         ConnectivityManager connMgr = (ConnectivityManager)
-        getSystemService(Context.CONNECTIVITY_SERVICE);
+                getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
         if(networkInfo != null && networkInfo.isConnected()){
@@ -172,17 +149,8 @@ public class Noticias extends AppCompatActivity {
             layoutEscudo.addView(logoDefensa);
             layoutEscudo.setGravity(Gravity.CENTER);
 
-            TextView tituloNoticia = findViewById(R.id.tituloNoticia);
-            ImageView imagenNoticia = findViewById(R.id.img_nota);
-            DescargaImgDefensa downloadImageTask = new DescargaImgDefensa(imagenNoticia);
-            downloadImageTask.execute(imageUrl);
-            TextView contenido1 = findViewById(R.id.content1);
-            TextView contenido2 = findViewById(R.id.content2);
-
-            tituloNoticia.setText(R.string.tituloNoticiaDefensa);
-            contenido1.setText(R.string.contenido1Defensa);
-            imagenNoticia.setImageResource(R.drawable.defensaimg);
-            contenido2.setText(R.string.contenido2Defensa);
+            ApiObtenerNoticias noticia = new ApiObtenerNoticias(this, 4);
+            noticia.execute("https://noticiasapi.lucas-pablopabl.repl.co/");
         }
         else{
             Toast.makeText(Noticias.this, "Su conexión con internet se perdió. Acitve sus datos o vuelva a una zona con conexión.", Toast.LENGTH_SHORT).show();
@@ -192,7 +160,7 @@ public class Noticias extends AppCompatActivity {
     public void onClickIndependiente(View view){
 
         ConnectivityManager connMgr = (ConnectivityManager)
-        getSystemService(Context.CONNECTIVITY_SERVICE);
+                getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
         if(networkInfo != null && networkInfo.isConnected()){
@@ -207,17 +175,8 @@ public class Noticias extends AppCompatActivity {
             layoutEscudo.addView(logoIndependiente);
             layoutEscudo.setGravity(Gravity.CENTER);
 
-            TextView tituloNoticia = findViewById(R.id.tituloNoticia);
-            ImageView imagenNoticia = findViewById(R.id.img_nota);
-            DescargaImgIndependiente downloadImageTask = new DescargaImgIndependiente(imagenNoticia);
-            downloadImageTask.execute(imageUrl);
-            TextView contenido1 = findViewById(R.id.content1);
-            TextView contenido2 = findViewById(R.id.content2);
-
-            tituloNoticia.setText(R.string.tituloNoticiaIndependiente);
-            contenido1.setText(R.string.contenido1Independiente);
-            imagenNoticia.setImageResource(R.drawable.independientenoticia);
-            contenido2.setText(R.string.contenido2Independiente);
+            ApiObtenerNoticias noticia = new ApiObtenerNoticias(this, 6);
+            noticia.execute("https://noticiasapi.lucas-pablopabl.repl.co/");
         }
         else{
             Toast.makeText(Noticias.this, "Su conexión con internet se perdió. Acitve sus datos o vuelva a una zona con conexión.", Toast.LENGTH_SHORT).show();
@@ -227,7 +186,7 @@ public class Noticias extends AppCompatActivity {
     public void onClickRacing(View view){
 
         ConnectivityManager connMgr = (ConnectivityManager)
-        getSystemService(Context.CONNECTIVITY_SERVICE);
+                getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
         if(networkInfo != null && networkInfo.isConnected()){
@@ -242,17 +201,8 @@ public class Noticias extends AppCompatActivity {
             layoutEscudo.addView(logoRacing);
             layoutEscudo.setGravity(Gravity.CENTER);
 
-            TextView tituloNoticia = findViewById(R.id.tituloNoticia);
-            ImageView imagenNoticia = findViewById(R.id.img_nota);
-            DescargaImgRacing downloadImageTask = new DescargaImgRacing(imagenNoticia);
-            downloadImageTask.execute(imageUrl);
-            TextView contenido1 = findViewById(R.id.content1);
-            TextView contenido2 = findViewById(R.id.content2);
-
-            tituloNoticia.setText(R.string.tituloNoticiaRacing);
-            contenido1.setText(R.string.contenido1Racing);
-            imagenNoticia.setImageResource(R.drawable.racingnoticia);
-            contenido2.setText(R.string.contenido2Racing);
+            ApiObtenerNoticias noticia = new ApiObtenerNoticias(this, 8);
+            noticia.execute("https://noticiasapi.lucas-pablopabl.repl.co/");
         }
         else{
             Toast.makeText(Noticias.this, "Su conexión con internet se perdió. Acitve sus datos o vuelva a una zona con conexión.", Toast.LENGTH_SHORT).show();
@@ -262,7 +212,7 @@ public class Noticias extends AppCompatActivity {
     public void onClickNewells(View view){
 
         ConnectivityManager connMgr = (ConnectivityManager)
-        getSystemService(Context.CONNECTIVITY_SERVICE);
+                getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
         if(networkInfo != null && networkInfo.isConnected()){
@@ -277,20 +227,31 @@ public class Noticias extends AppCompatActivity {
             layoutEscudo.addView(logoNewells);
             layoutEscudo.setGravity(Gravity.CENTER);
 
-            TextView tituloNoticia = findViewById(R.id.tituloNoticia);
-            ImageView imagenNoticia = findViewById(R.id.img_nota);
-            DescargaImgNewells downloadImageTask = new DescargaImgNewells(imagenNoticia);
-            downloadImageTask.execute(imageUrl);
-            TextView contenido1 = findViewById(R.id.content1);
-            TextView contenido2 = findViewById(R.id.content2);
-
-            tituloNoticia.setText(R.string.tituloNoticiaNewells);
-            contenido1.setText(R.string.contenido1Newells);
-            imagenNoticia.setImageResource(R.drawable.newellsnoticia);
-            contenido2.setText(R.string.contenido2Newells);
+            ApiObtenerNoticias noticia = new ApiObtenerNoticias(this, 5);
+            noticia.execute("https://noticiasapi.lucas-pablopabl.repl.co/");
         }
         else{
             Toast.makeText(Noticias.this, "Su conexión con internet se perdió. Acitve sus datos o vuelva a una zona con conexión.", Toast.LENGTH_SHORT).show();
         }
     }
+
+    public void cargarDatosDesdeAsyncTask(String s) {
+        try {
+            JSONObject noticia = new JSONObject(s);
+            String titulo = noticia.getString("titulo");
+            String contenidoUno = noticia.getString("contenido1");
+            String contenidoDos = noticia.getString("contenido2");
+            String imageUrl = noticia.getString("img");
+            tit.setText(titulo);
+            conte1.setText(contenidoUno);
+            conte2.setText(contenidoDos);
+            img = findViewById(R.id.img_nota);
+            DescargaImg downloadImageTask = new DescargaImg(img);
+            downloadImageTask.execute(imageUrl);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
