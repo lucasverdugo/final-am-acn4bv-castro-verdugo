@@ -1,5 +1,6 @@
 package com.example.parcial_2_am_acn4bv_castro_verdugo;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -15,7 +16,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,13 +33,29 @@ public class Noticias extends AppCompatActivity {
     private TextView conte2;
 
     private FirebaseAuth mAuth;
+    private FirebaseFirestore db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_noticias);
         mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
         String mail = mAuth.getCurrentUser().getEmail().toString();
-        Toast.makeText(Noticias.this, "Hola " + mail + " accede a las novedades de fútbol seleccionando un equipo!", Toast.LENGTH_SHORT).show();
+        String uid = mAuth.getCurrentUser().getUid();
+        db.collection("users")
+                        .whereEqualTo("uidAuth", uid)
+                                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.isSuccessful()){
+                            for(QueryDocumentSnapshot document:task.getResult()){
+                                String nombre = document.getString("nombre");
+                                Toast.makeText(Noticias.this, "Hola " + nombre + " accede a las novedades de fútbol seleccionando un equipo!", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+                });
+
         ApiObtenerNoticias noticia = new ApiObtenerNoticias(this, 0);
         noticia.execute("https://noticiasapi.lucas-pablopabl.repl.co/");
         tit = findViewById(R.id.tituloNoticia);
