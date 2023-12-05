@@ -15,8 +15,12 @@
     <string name="descripcion_logo">Imagen de Logo</string>
     <string name="user_label">Usuario</string>
     <string name="password_label">Clave</string>
+    <string name="fname_label">Nombre</string>
+    <string name="lname_label">Apellido</string>
     <string name="user_description">Ingrese su mail como usuario</string>
     <string name="password_description">Ingrese su contraseña</string>
+    <string name="fname_description">Ingrese su nombre</string>
+    <string name="lname_description">Ingrese su apellido</string>
     <string name="titulo">Titulo</string>
 
     ///Inicio de Sesion

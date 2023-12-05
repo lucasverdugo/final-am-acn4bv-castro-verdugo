@@ -9,11 +9,11 @@ import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class DescargaImgIndependiente extends AsyncTask<String, Void, Bitmap> {
+public class DescargaImg extends AsyncTask<String, Void, Bitmap> {
 
     private final WeakReference<ImageView> imageViewReference;
 
-    public DescargaImgIndependiente(ImageView imageView) {
+    public DescargaImg(ImageView imageView) {
         imageViewReference = new WeakReference<>(imageView);
     }
 
