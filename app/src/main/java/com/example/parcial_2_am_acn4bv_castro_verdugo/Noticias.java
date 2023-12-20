@@ -1,5 +1,6 @@
 package com.example.parcial_2_am_acn4bv_castro_verdugo;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -15,7 +16,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,13 +36,16 @@ public class Noticias extends AppCompatActivity {
     private TextView conte2;
 
     private FirebaseAuth mAuth;
+    private FirebaseFirestore db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_noticias);
         mAuth = FirebaseAuth.getInstance();
+
         String nombreUsuario = getIntent().getStringExtra("nombreUsuario");
         Toast.makeText(Noticias.this, "Hola " + nombreUsuario + " accede a las novedades de fútbol seleccionando un equipo!", Toast.LENGTH_SHORT).show();
+
         ApiObtenerNoticias noticia = new ApiObtenerNoticias(this, 0);
         noticia.execute("https://noticiasapi.lucas-pablopabl.repl.co/");
         tit = findViewById(R.id.tituloNoticia);
@@ -58,7 +70,7 @@ public class Noticias extends AppCompatActivity {
     public void onClickBoca(View view){
 
         ConnectivityManager connMgr = (ConnectivityManager)
-        getSystemService(Context.CONNECTIVITY_SERVICE);
+                getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
         if(networkInfo != null && networkInfo.isConnected()){
@@ -84,7 +96,7 @@ public class Noticias extends AppCompatActivity {
     public void onClickRiver(View view){
 
         ConnectivityManager connMgr = (ConnectivityManager)
-        getSystemService(Context.CONNECTIVITY_SERVICE);
+                getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
         if(networkInfo != null && networkInfo.isConnected()){
@@ -109,7 +121,7 @@ public class Noticias extends AppCompatActivity {
     public void onClickRosario(View view){
 
         ConnectivityManager connMgr = (ConnectivityManager)
-        getSystemService(Context.CONNECTIVITY_SERVICE);
+                getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
         if(networkInfo != null && networkInfo.isConnected()){
@@ -134,7 +146,7 @@ public class Noticias extends AppCompatActivity {
     public void onClickDefensa(View view){
 
         ConnectivityManager connMgr = (ConnectivityManager)
-        getSystemService(Context.CONNECTIVITY_SERVICE);
+                getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
         if(networkInfo != null && networkInfo.isConnected()){
@@ -160,7 +172,7 @@ public class Noticias extends AppCompatActivity {
     public void onClickIndependiente(View view){
 
         ConnectivityManager connMgr = (ConnectivityManager)
-        getSystemService(Context.CONNECTIVITY_SERVICE);
+                getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
         if(networkInfo != null && networkInfo.isConnected()){
@@ -186,7 +198,7 @@ public class Noticias extends AppCompatActivity {
     public void onClickRacing(View view){
 
         ConnectivityManager connMgr = (ConnectivityManager)
-        getSystemService(Context.CONNECTIVITY_SERVICE);
+                getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
         if(networkInfo != null && networkInfo.isConnected()){
@@ -212,7 +224,7 @@ public class Noticias extends AppCompatActivity {
     public void onClickNewells(View view){
 
         ConnectivityManager connMgr = (ConnectivityManager)
-        getSystemService(Context.CONNECTIVITY_SERVICE);
+                getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
         if(networkInfo != null && networkInfo.isConnected()){
@@ -247,6 +259,7 @@ public class Noticias extends AppCompatActivity {
             conte2.setText(contenidoDos);
             img = findViewById(R.id.img_nota);
             DescargaImgNewells downloadImageTask = new DescargaImgNewells(img);
+
             downloadImageTask.execute(imageUrl);
 
         } catch (JSONException e) {

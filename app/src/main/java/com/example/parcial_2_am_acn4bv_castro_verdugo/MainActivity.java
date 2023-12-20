@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
             String uid = currentUser.getUid();
             db.collection("users")
                     .whereEqualTo("uidAuth",uid)
+
                     .get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
@@ -57,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
                                     Toast.makeText(getApplicationContext(), "Bienvenido: " + nombre, Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(getApplicationContext(), Noticias.class);
                                     intent.putExtra("nombreUsuario", nombre);
+
                                     startActivity(intent);
                                 }
                             }
