@@ -26,9 +26,6 @@ import com.google.firebase.firestore.QuerySnapshot;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class Noticias extends AppCompatActivity {
     private TextView tit;
     private ImageView img;
@@ -42,9 +39,22 @@ public class Noticias extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_noticias);
         mAuth = FirebaseAuth.getInstance();
-
-        String nombreUsuario = getIntent().getStringExtra("nombreUsuario");
-        Toast.makeText(Noticias.this, "Hola " + nombreUsuario + " accede a las novedades de fútbol seleccionando un equipo!", Toast.LENGTH_SHORT).show();
+        db = FirebaseFirestore.getInstance();
+        String mail = mAuth.getCurrentUser().getEmail().toString();
+        String uid = mAuth.getCurrentUser().getUid();
+        db.collection("users")
+                        .whereEqualTo("uidAuth", uid)
+                                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.isSuccessful()){
+                            for(QueryDocumentSnapshot document:task.getResult()){
+                                String nombre = document.getString("nombre");
+                                Toast.makeText(Noticias.this, "Hola " + nombre + " accede a las novedades de fútbol seleccionando un equipo!", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+                });
 
         ApiObtenerNoticias noticia = new ApiObtenerNoticias(this, 0);
         noticia.execute("https://noticiasapi.lucas-pablopabl.repl.co/");
@@ -258,8 +268,7 @@ public class Noticias extends AppCompatActivity {
             conte1.setText(contenidoUno);
             conte2.setText(contenidoDos);
             img = findViewById(R.id.img_nota);
-            DescargaImgNewells downloadImageTask = new DescargaImgNewells(img);
-
+            DescargaImg downloadImageTask = new DescargaImg(img);
             downloadImageTask.execute(imageUrl);
 
         } catch (JSONException e) {

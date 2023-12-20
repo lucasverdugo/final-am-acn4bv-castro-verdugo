@@ -62,5 +62,5 @@ public class ApiObtenerNoticias extends AsyncTask<String, Integer, String> {
         super.onPostExecute(s);
         noticiasActivity.cargarDatosDesdeAsyncTask(s);
     }
-}
 
+}
