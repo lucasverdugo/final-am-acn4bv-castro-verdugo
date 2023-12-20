@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -43,21 +44,21 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
-            String uid = mAuth.getCurrentUser().getUid();
+            String uid = currentUser.getUid();
             db.collection("users")
-                    .whereEqualTo("uidAuth", uid)
+                    .whereEqualTo("uidAuth",uid)
+
                     .get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
-
                             if(task.isSuccessful()){
-                                for(QueryDocumentSnapshot document:task.getResult()){
+                                for(QueryDocumentSnapshot document: task.getResult()){
                                     String nombre = document.getString("nombre");
-                                    Toast t1 = new Toast(getApplicationContext());
-                                    t1.setText("Bienvenido " + nombre + "!!!!!!");
-                                    t1.show();
+                                    Toast.makeText(getApplicationContext(), "Bienvenido: " + nombre, Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(getApplicationContext(), Noticias.class);
+                                    intent.putExtra("nombreUsuario", nombre);
+
                                     startActivity(intent);
                                 }
                             }
